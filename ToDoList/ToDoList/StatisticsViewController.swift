@@ -12,7 +12,6 @@ class StatisticsViewController: UIViewController {
     
     var completedItems : Int!
     
-    @IBOutlet weak var annoucementText1: UILabel!
     @IBOutlet weak var announcementText2: UILabel!
     
     override func viewDidLoad() {

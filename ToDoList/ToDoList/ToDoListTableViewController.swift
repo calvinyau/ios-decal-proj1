@@ -14,7 +14,6 @@ class ToDoListTableViewController: UITableViewController {
     var itemsWithDates = [String: NSDate]()
     var completedItems : Int = 0
     
-//    cell.accessoryType = .Checkmark
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,7 +77,6 @@ class ToDoListTableViewController: UITableViewController {
             else {
                 cell.accessoryType = .None
                 itemsWithCompletion[keys[indexPath.row]] = false
-                itemsWithDates[keys[indexPath.row]] = nil
             }
         }
     }
@@ -102,13 +100,13 @@ class ToDoListTableViewController: UITableViewController {
         }
     }
 
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
-        //remove item
+        let compKeys = Array(itemsWithCompletion.keys).sort()
+        let dateKeys = Array(itemsWithDates.keys).sort()
+        itemsWithCompletion.removeValueForKey(compKeys[indexPath.row])
+        itemsWithDates.removeValueForKey(dateKeys[indexPath.row])
         self.tableView.reloadData()
         
     }
